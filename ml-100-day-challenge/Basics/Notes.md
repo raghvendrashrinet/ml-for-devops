@@ -7,6 +7,7 @@ Day1 : The xFusionCorp Industries data science team needs a standardised Python 
   >python -m venv ml-env
 2. Activate the environment and install the following packages: numpy, pandas, scikit-learn, and matplotlib.
   > source ml-env/bin/activate
+ 
   > pip install pandas scikit-learn numpy matplotlib
 3. Generate a requirements.txt file using pip freeze and save it at /root/code/requirements.txt
   >  pip freeze > requirements.txt
@@ -75,6 +76,12 @@ What is uv?
 a> How uv replaces pyenv (Python Version Tool) : Instead of installing a separate tool like pyenv and configuring shell scripts, uv manages Python versions natively
 ```bash
 uv python install 3.12
+```
+Creating env 
+```
+uv venv --python 3.12  # Default Name: venv
+
+uv venv myenv --python 3.12  # Custom Name:set your name eg myenv
 ```
  b> How uv replaces pip-tools (The Locking Tool)  
    uv has the features of pip-compile and pip-sync built directly into its core commands  
