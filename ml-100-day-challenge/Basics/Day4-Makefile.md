@@ -3,6 +3,9 @@ Note:  use a literal Tab character to indent the command lines underneath a targ
 ```makefile
 # fraud-detection Makefile
 
+# Declare all six target names as phony to prevent file conflicts
+.PHONY: setup data train test clean all
+
 setup:
         python3 -m venv mlops-venv && mlops-venv/bin/pip install -r requirements.txt
 
