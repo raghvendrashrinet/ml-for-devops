@@ -36,4 +36,66 @@ When you run a professional application pipeline (like typing make all in your t
 4. Pipeline Processing: The application streams data through your modular code layout—passing inputs cleanly from your data processing modules straight into your machine learning or logic modules.
 5. Testing: The test runner (pytest) simulates user interactions or edge cases to guarantee data integrity.
 
-  
+---
+### 📦 Where Does the Wheel Fit in the Workflow?
+The Wheel is the final output of your development process.
+
+An application is split into multiple files, folders, and virtual environments, you face a new problem: How do you safely give this application to someone else, or run it on a production server, without manually copying and pasting folders?This is exactly where the Wheel comes in.  
+
+Instead of sending someone a raw folder of loose .py files, you bundle your entire src/ directory into a single Wheel file (.whl). The Wheel turns your application layout into an installable software package, just like an .exe file on Windows or an app on your phone.
+ 
+#### Wheel  in the Workflow
+```
+Step 1: Write Code (multiple .py files) 
+   ↓
+Step 2: Test & Format (pytest, ruff, black)
+   ↓
+Step 3: Build a Wheel (bundles everything into a single file) ← HERE IS THE WHEEL
+   ↓
+Step 4: Ship & Deploy (pip install my_app.whl on any server)
+``` 
+ 
+---
+## 🛠️ Step-by-Step Example: Turning an App into a Wheel
+Let's look at your fraud-detection project. You have multiple files inside your src/ directory.  
+1. Define the Build Rules in pyproject.toml  
+   To make a wheel, your pyproject.toml file needs to declare how to package the app. We add a [build-system] section at the top:
+   ```toml
+   [build-system]
+   requires = ["hatchling"]
+   build-backend = "hatchling"
+
+   [project]
+   name = "fraud_detection"
+   version = "1.0.0"
+   description = "An enterprise fraud detection application"
+   requires-python = ">=3.10"
+   dependencies = [
+     "pandas>=2.0.0",
+   ]
+
+   [tool.hatch.build.targets.wheel]
+   packages = ["src"] 
+   ```
+ 2. Run the Build Command  
+       In your terminal, inside your project directory, you run the standard Python build tool:  
+       `python3 -m build`
+ 3. What Happens Behind the Scenes?
+    The build tool reads your code, compresses your src/ files, attaches your dependency list (pandas), and outputs a single file inside a new dist/ folder:
+    `📂 dist/fraud_detection-1.0.0-py3-none-any.whl`
+ ---
+ ### 🚀 How the End User (or Server) Uses It  
+ Imagine your colleague or a production server needs to run your fraud detection program. They don’t need your source code repository, your Makefile, or your development tools.
+ They only need that one `.whl file`.They open their terminal and type:  
+ ```pip install fraud_detection-1.0.0-py3-none-any.whl ```
+
+ ##### The Magic of pip install with a Wheel:  
+ 1. Unpacking: pip unzips the wheel directly into the server's Python environment
+ 2. Auto-Dependency: pip looks inside the wheel metadata, sees that your app requires pandas, and automatically downloads and installs pandas for the user.
+ 3. Execution Ready: Your code is now natively available. Anyone on that machine can open Python from anywhere and instantly run your code:
+```python
+from src.models import train
+# The code runs perfectly!
+```
+
+ 
