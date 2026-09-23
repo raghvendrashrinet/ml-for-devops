@@ -1,5 +1,14 @@
 Hard tab rule
-Note:  use a literal Tab character to indent the command lines underneath a target. You cannot use spaces
+Note:  use a literal Tab character to indent the command lines underneath a target. You cannot use spaces  
+`requirements.txt`
+```requirements.txt
+pytest
+pandas
+scikit-learn
+numpy
+```
+
+`Makefile`
 ```makefile
 # fraud-detection Makefile
 # Declare all targets as .PHONY to avoid file conflicts
