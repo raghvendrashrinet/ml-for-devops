@@ -4,13 +4,18 @@ MLOps 100 days challenge Kodekloud
 
 Day1 : The xFusionCorp Industries data science team needs a standardised Python environment for their new ML project. Set up a virtual environment
 1 Create a Python virtual environment named ml-env under /root/code/ using python3 -m venv.
-  >python -m venv ml-env
+```
+  python -m venv ml-env
+```
 2. Activate the environment and install the following packages: numpy, pandas, scikit-learn, and matplotlib.
-  > source ml-env/bin/activate
- 
-  > pip install pandas scikit-learn numpy matplotlib
+```
+source ml-env/bin/activate
+pip install pandas scikit-learn numpy matplotlib
+```
 3. Generate a requirements.txt file using pip freeze and save it at /root/code/requirements.txt
-  >  pip freeze > requirements.txt
+```
+pip freeze > requirements.txt
+```
 ---
 1. pyenv : (The Python Version Installer)
     pyenv lets you install and switch between dozens of different Python versions globally or per folder
@@ -167,6 +172,15 @@ make env    # Instantly creates your uv virtual environment
 make sync   # Instantly syncs your packages
 make test   # Instantly runs your tests
 ```
-
-
+---
+- 1. `.DEFAULT_GOAL := help`
+What it does: Sets the default command (target) that runs if you simply type make in your terminal without specifying a name.
+- 2. `.PHONY `: env lock sync test clean
+What it does: Declares env, lock, sync, test, and clean as "fake" (phony) targets, meaning they are command shortcuts rather than real files on your computer.
+##### The Targets (Commands) Defined Below
+- `env`: Runs uv venv .venv to build your isolated Python virtual environment.
+- `lock`: Runs uv pip compile pyproject.toml -o requirements.txt to lock exact dependency versions.
+- `sync`: Runs uv sync to install all locked packages into .venv.
+- `test`: Runs uv run pytest to execute your test suite using the project environment.
+- `clean`: Deletes .venv and temporary __pycache__ directories to give you a fresh workspace.
    
