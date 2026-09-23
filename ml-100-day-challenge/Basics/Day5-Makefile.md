@@ -22,6 +22,14 @@ clean:
         find . -type d -name "__pycache__" -exec rm -rf {} +
         rm -rf .pytest_cache
         rm -rf models/*
+help:
+	@echo "Available commands:"
+	@echo "  make setup   - Set up virtual environment and install dependencies"
+	@echo "  make data    - Process raw data"
+	@echo "  make train   - Train the ML model"
+	@echo "  make test    - Run tests with pytest"
+	@echo "  make clean   - Remove cache files and artifacts"
+	@echo "  make all     - Run setup, data processing, training, and testing"
 
 all: setup data  train test
 ~                           
