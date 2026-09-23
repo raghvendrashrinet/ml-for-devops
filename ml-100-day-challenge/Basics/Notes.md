@@ -129,8 +129,7 @@ As projects grow, your commands get longer. Instead of remembering or typing:
   - `python -m pytest`: Runs pytest as a module using your current Python environment.
   - `tests/`: Specifies the directory containing the test files to run.
   - `--cov=app`: Tracks code coverage for the app package.
-
---cov-report=term-missing: Displays a terminal summary showing line numbers for any uncovered code.
+  - `--cov-report=term-missing`: Displays a terminal summary showing line numbers for any uncovered code.
   You can just type:
   - `make test`
   - `make lock`
