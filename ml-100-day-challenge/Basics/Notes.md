@@ -17,7 +17,7 @@ pip install pandas scikit-learn numpy matplotlib
 pip freeze > requirements.txt
 ```
 ---
-1. pyenv : (The Python Version Installer)
+ 1. `pyenv` : (The Python Version Installer)
     pyenv lets you install and switch between dozens of different Python versions globally or per folder
    eg: system has  comes one Python version (e.g., 3.10), but Project A needs Python 3.9
    ```bash
@@ -25,7 +25,7 @@ pip freeze > requirements.txt
    pyenv local 3.11.4        # Makes this specific folder use 3.11.4 automatically
    python -m venv my_project_env # this time env have 3.11.4 python version
    ```
-2.pip-tools (The Lockfile Creator)
+ 2. `pip-tools` (The Lockfile Creator)
   Problem: pip freeze saves every single sub-dependency into your file, making it messy and hard to upgrade just one main library.  
   ip-tools lets you write a clean list of only your top-level packages (e.g., just requests) in a file called requirements.in. It then automatically calculates and locks down the exact sub-dependencies into a secure requirements.txt file.  
   a>
