@@ -41,7 +41,7 @@ pip freeze > requirements.txt
   ```bash
    pip-compile requirements.in
   ```
-  ip-tools looks up requests, checks what sub-libraries it needs to work, and automatically outputs a perfect, fully pinned requirements.txt
+  pip-tools looks up requests, checks what sub-libraries it needs to work, and automatically outputs a perfect, fully pinned requirements.txt
   ```text
   
 
