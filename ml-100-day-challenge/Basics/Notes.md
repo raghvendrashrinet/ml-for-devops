@@ -27,7 +27,10 @@ pip freeze > requirements.txt
    ```
  2. `pip-tools` (The Lockfile Creator)
   Problem: pip freeze saves every single sub-dependency into your file, making it messy and hard to upgrade just one main library.  
-  pip-tools lets you write a clean list of only your top-level packages (e.g., just requests) in a file called requirements.in. It then automatically calculates and locks down the exact sub-dependencies into a secure requirements.txt file.  
+  pip-tools lets you write a clean list of only your top-level packages (e.g., just requests) in a file called requirements.in. It then automatically calculates and locks down the exact sub-dependencies into a secure requirements.txt file.
+
+  `pip-tool`  library provides two primary command-line tools that work in tandem to freeze and maintain your developer environments:  
+     'pip-compile` & 'pip-sync`
   a>
   ```bash
   pip install pip-tools
